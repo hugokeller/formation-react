@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import './App.css';
 
 class App extends Component {
@@ -12,15 +13,16 @@ class App extends Component {
                     </div>
                     <div className="collapse navbar-collapse">
                         <ul className="nav navbar-nav">
-                            <li><a href="#">Liste des utilisateurs</a></li>
-                            <li><a href="#">Autres informations</a></li>
+                            <li><Link to="/user">Liste des utilisateurs</Link></li>
+                            <li><Link to="/info">Autres informations</Link></li>
                         </ul>
                         <ul className="nav navbar-nav navbar-right">
-                            <li><a href="#">Se connecter</a></li>
+                            <li><Link to="/login">Se connecter</Link></li>
                         </ul>
                     </div>
                 </div>
             </nav>
+            {this.props.children}
         </div>
     );
   }
