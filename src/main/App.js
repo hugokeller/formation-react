@@ -13,7 +13,7 @@ class App extends Component {
                     </div>
                     <div className="collapse navbar-collapse">
                         <ul className="nav navbar-nav">
-                            <li><Link to="/user">Liste des utilisateurs</Link></li>
+                            <li><Link to="/user">Détail de l'utilisateur</Link></li>
                             <li><Link to="/info">Autres informations</Link></li>
                         </ul>
                         <ul className="nav navbar-nav navbar-right">
