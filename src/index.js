@@ -5,7 +5,7 @@ import {createStore, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import {Provider} from 'react-redux';
-import { user } from './main/reducers';
+import { rootReducer } from './main/reducers';
 
 import App from './main/App';
 import './index.css';
@@ -15,9 +15,10 @@ import User from './main/Components/User';
 import Info from './main/Components/Info';
 import Login from './main/Components/Login';
 import Home from './main/Components/Home';
+import Logout from './main/Components/Logout';
 
 const store = createStore(
-    user,
+    rootReducer,
     applyMiddleware(
         thunkMiddleware,
         createLogger()
@@ -31,6 +32,7 @@ ReactDOM.render((
                 <Route path="/user" component={User}/>
                 <Route path="/info" component={Info}/>
                 <Route path="/login" component={Login}/>
+                <Route path="/logout" component={Logout}/>
             </Route>
         </Router>
     </Provider>

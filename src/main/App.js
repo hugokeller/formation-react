@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import  {connect} from 'react-redux';
+import {logout} from './actions/actions';
 import './App.css';
 
 class App extends Component {
@@ -12,12 +14,20 @@ class App extends Component {
                         <a className="navbar-brand" href="#">Accueil</a>
                     </div>
                     <div className="collapse navbar-collapse">
-                        <ul className="nav navbar-nav">
-                            <li><Link to="/user">Détail de l'utilisateur</Link></li>
-                            <li><Link to="/info">Autres informations</Link></li>
-                        </ul>
+                        {
+                            this.props.isConnected ?
+                                <ul className="nav navbar-nav">
+                                    <li><Link to="/user">Détail de l'utilisateur</Link></li>
+                                    <li><Link to="/info">Autres informations</Link></li>
+                                </ul> :
+                                null
+                        }
                         <ul className="nav navbar-nav navbar-right">
-                            <li><Link to="/login">Se connecter</Link></li>
+                            {
+                                this.props.isConnected ?
+                                    <li><Link to="/logout" onClick={() => this.props.dispatch(logout())}> Se déconnecter</Link></li> :
+                                    <li><Link to="/login">Se connecter</Link></li>
+                            }
                         </ul>
                     </div>
                 </div>
@@ -27,4 +37,8 @@ class App extends Component {
     );
   }
 }
-export default App;
+
+const mapStateToProps = (state) => ({
+    isConnected: state.auth.isConnected
+});
+export default connect(mapStateToProps, null)(App);
